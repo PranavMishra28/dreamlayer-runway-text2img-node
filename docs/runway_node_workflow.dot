@@ -1,0 +1,23 @@
+digraph RunwayNodeWorkflow {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+    edge [arrowhead=vee];
+
+    // Nodes
+    prompt [label="Text Prompt\n(String Input)"];
+    runway [label="Runway Text2Img Node"];
+    save [label="Save Image"];
+    
+    // API details 
+    api [label="Runway API\nEndpoint: api.dev.runwayml.com\nModel: gen4_image", shape=ellipse, fillcolor=lightgreen];
+    
+    // Parameters
+    params [label="Parameters:\n- promptText\n- ratio (9 options)\n- seed\n- timeout", fillcolor=lightyellow];
+    
+    // Connections
+    prompt -> runway;
+    runway -> api [dir=both, label="HTTP API calls"];
+    api -> runway [label="Returns image"];
+    runway -> save;
+    params -> runway [style=dashed];
+}

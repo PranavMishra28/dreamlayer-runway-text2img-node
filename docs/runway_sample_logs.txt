@@ -1,0 +1,19 @@
+[INFO] 2025-08-04 15:32:12 - Starting Runway Text2Img generation...
+[INFO] 2025-08-04 15:32:12 - Creating task with prompt: A futuristic cityscape at dusk with flying cars...
+[DEBUG] 2025-08-04 15:32:13 - POST request to https://api.dev.runwayml.com/v1/text_to_image
+[INFO] 2025-08-04 15:32:14 - Task created with ID: rtask-1234abcd5678efgh
+[DEBUG] 2025-08-04 15:32:15 - Task rtask-1234abcd5678efgh status: PENDING
+[DEBUG] 2025-08-04 15:32:17 - Task rtask-1234abcd5678efgh status: RUNNING
+[DEBUG] 2025-08-04 15:32:17 - Progress: 10.0%
+[DEBUG] 2025-08-04 15:32:19 - Task rtask-1234abcd5678efgh status: RUNNING
+[DEBUG] 2025-08-04 15:32:19 - Progress: 25.0%
+[DEBUG] 2025-08-04 15:32:21 - Task rtask-1234abcd5678efgh status: RUNNING
+[DEBUG] 2025-08-04 15:32:21 - Progress: 45.0%
+[DEBUG] 2025-08-04 15:32:23 - Task rtask-1234abcd5678efgh status: RUNNING
+[DEBUG] 2025-08-04 15:32:23 - Progress: 75.0%
+[DEBUG] 2025-08-04 15:32:25 - Task rtask-1234abcd5678efgh status: RUNNING
+[DEBUG] 2025-08-04 15:32:25 - Progress: 90.0%
+[DEBUG] 2025-08-04 15:32:27 - Task rtask-1234abcd5678efgh status: SUCCEEDED
+[INFO] 2025-08-04 15:32:27 - Downloading image from: https://api.dev.runwayml.com/v1/files/gen4-output-abcd1234.png
+[INFO] 2025-08-04 15:32:28 - Image generated successfully: torch.Size([1, 1080, 1920, 3])
+[INFO] 2025-08-04 15:32:28 - Total generation time: 16.2 seconds

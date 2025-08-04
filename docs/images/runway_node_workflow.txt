@@ -1,0 +1,26 @@
+```
+                    +---------------+
+                    | Text Prompt   |
+                    | (String Input)|
+                    +-------+-------+
+                            |
+                            v
++----------------+   HTTP   +----------------+
+|                | <------> |                |
+| Runway API     |          | Runway Text2Img|
+| gen4_image     |          | Node           |
+|                | -------> |                |
++----------------+  Image   +-------+--------+
+                            |
+                            v
+                    +-------+-------+
+                    | Save Image    |
+                    |               |
+                    +---------------+
+
+Parameters:
+- promptText (string)
+- ratio (9 aspect ratio options)
+- seed (int, optional)
+- timeout (int, seconds)
+```
