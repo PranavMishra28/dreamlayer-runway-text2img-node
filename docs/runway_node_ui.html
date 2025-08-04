@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Runway Text2Img Node - ComfyUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+        .comfy-ui {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .node {
+            background-color: #3c3c3c;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        .node-title {
+            background-color: #4b4b4b;
+            padding: 8px 12px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 6px 6px 0 0;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .runway-node {
+            border: 2px solid #8c61ff;
+        }
+        .runway-title {
+            background-color: #8c61ff;
+        }
+        .param {
+            margin: 10px 0;
+        }
+        .param-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #b8b8b8;
+        }
+        .param-input {
+            width: 100%;
+            background-color: #252525;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 8px;
+            color: white;
+        }
+        select.param-input {
+            height: 34px;
+        }
+        textarea.param-input {
+            min-height: 80px;
+            font-family: inherit;
+        }
+        .connection-point {
+            width: 12px;
+            height: 12px;
+            background-color: #ffa047;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .connection-label {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .node-description {
+            background-color: #2a2a2a;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #c0c0c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="comfy-ui">
+        <div class="logo">
+            <h1>ComfyUI - Runway Text2Img Node</h1>
+        </div>
+
+        <div class="node runway-node">
+            <div class="node-title runway-title">Runway Text to Image</div>
+            
+            <div class="connection-label">
+                <div class="connection-point"></div>
+                <span>Input: Text Prompt</span>
+            </div>
+
+            <div class="param">
+                <div class="param-name">Prompt Text:</div>
+                <textarea class="param-input">A futuristic cityscape at dusk with flying cars and neon lights, cyberpunk style, highly detailed, cinematic lighting</textarea>
+            </div>
+
+            <div class="param">
+                <div class="param-name">Aspect Ratio:</div>
+                <select class="param-input">
+                    <option>1024:1024</option>
+                    <option selected>1920:1080</option>
+                    <option>1080:1920</option>
+                    <option>1280:720</option>
+                    <option>720:1280</option>
+                    <option>1152:896</option>
+                    <option>896:1152</option>
+                    <option>1536:640</option>
+                    <option>640:1536</option>
+                </select>
+            </div>
+
+            <div class="param">
+                <div class="param-name">Seed:</div>
+                <input type="number" class="param-input" value="12345">
+            </div>
+
+            <div class="param">
+                <div class="param-name">Timeout (seconds):</div>
+                <input type="number" class="param-input" value="120">
+            </div>
+
+            <div class="connection-label">
+                <div class="connection-point"></div>
+                <span>Output: Generated Image</span>
+            </div>
+
+            <div class="node-description">
+                Generates images using Runway's Gen-4 text-to-image API. Requires RUNWAY_API_KEY environment variable to be set. Supports multiple aspect ratios and custom seeds for reproducibility.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

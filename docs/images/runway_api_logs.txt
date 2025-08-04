@@ -1,0 +1,26 @@
+[INFO] 2025-01-04 18:00:12 - Starting Runway Text2Img generation...
+[INFO] 2025-01-04 18:00:12 - Creating task with prompt: A futuristic cityscape at dusk, cinematic lighting
+[DEBUG] 2025-01-04 18:00:13 - Request payload: {
+  "model": "gen4_image",
+  "promptText": "A futuristic cityscape at dusk, cinematic lighting",
+  "ratio": "1024:1024"
+}
+[DEBUG] 2025-01-04 18:00:13 - Request headers: {
+  "Authorization": "Bearer sk-***",
+  "Content-Type": "application/json",
+  "X-Runway-Version": "2024-11-06"
+}
+[INFO] 2025-01-04 18:00:14 - Task created with ID: rtask-abc123def456ghi789
+[DEBUG] 2025-01-04 18:00:15 - Task rtask-abc123def456ghi789 status: PENDING
+[DEBUG] 2025-01-04 18:00:17 - Task rtask-abc123def456ghi789 status: RUNNING
+[DEBUG] 2025-01-04 18:00:19 - Progress: 15.0%
+[DEBUG] 2025-01-04 18:00:21 - Progress: 35.0%
+[DEBUG] 2025-01-04 18:00:23 - Progress: 60.0%
+[DEBUG] 2025-01-04 18:00:25 - Progress: 85.0%
+[DEBUG] 2025-01-04 18:00:27 - Task rtask-abc123def456ghi789 status: SUCCEEDED
+[INFO] 2025-01-04 18:00:28 - Image URL received: https://generated-images.runway.com/rtask-abc123def456ghi789.jpg
+[INFO] 2025-01-04 18:00:29 - Downloading generated image...
+[INFO] 2025-01-04 18:00:30 - Image downloaded successfully (2.3 MB)
+[INFO] 2025-01-04 18:00:30 - Converting image to RGB format
+[INFO] 2025-01-04 18:00:30 - Converting to torch tensor: torch.Size([1, 1024, 1024, 3])
+[INFO] 2025-01-04 18:00:30 - Image generated successfully in 18.2 seconds
