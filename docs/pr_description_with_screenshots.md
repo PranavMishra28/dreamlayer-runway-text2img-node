@@ -13,39 +13,90 @@ Implements Task #1 of the Open-Source Challenge: a complete Runway text-to-image
 ## Screenshots
 
 ### ComfyUI Node Interface
-![Runway Text2Img Node UI](https://raw.githubusercontent.com/DreamLayer-AI/DreamLayer/feat/runway_text2img/docs/runway_node_ui_screenshot.png)
+![Runway Text2Img Node UI](https://github.com/user-attachments/assets/c8d5db7d-5539-4555-9b02-375ca95134f2)
 
-*The node appears in ComfyUI under "api node/image/runway" category*
+*The node appears in ComfyUI under "api node/image/runway" category. Shows the complete workflow with existing nodes.*
 
-### Sample Generated Image
-![Generated Image Example](https://raw.githubusercontent.com/DreamLayer-AI/DreamLayer/feat/runway_text2img/docs/runway_sample_image.png)
+### Node Configuration Panel
+![Node Configuration](https://github.com/user-attachments/assets/af01ec26-ac16-417e-a9e4-13425433ac6d)
 
-*Image generated with prompt: "A futuristic cityscape at dusk with flying cars and neon lights, cyberpunk style"*
+*Detailed view of the Runway Text to Image node configuration panel showing all parameters: promptText, ratio, timeout, and seed. Includes comprehensive documentation of the node's functionality.*
 
 ### Node Workflow Diagram
-![Node Workflow](https://raw.githubusercontent.com/DreamLayer-AI/DreamLayer/feat/runway_text2img/docs/runway_node_workflow.png)
+```
+                    +---------------+
+                    | Text Prompt   |
+                    | (String Input)|
+                    +-------+-------+
+                            |
+                            v
++----------------+   HTTP   +----------------+
+|                | <------> |                |
+| Runway API     |          | Runway Text2Img|
+| gen4_image     |          | Node           |
+|                | -------> |                |
++----------------+  Image   +-------+--------+
+                            |
+                            v
+                    +-------+-------+
+                    | Save Image    |
+                    |               |
+                    +---------------+
+
+Parameters:
+- promptText (string)
+- ratio (9 aspect ratio options)
+- seed (int, optional)
+- timeout (int, seconds)
+```
 
 ### API Interaction Logs
 ```
-[INFO] 2025-08-04 15:32:12 - Starting Runway Text2Img generation...
-[INFO] 2025-08-04 15:32:12 - Creating task with prompt: A futuristic cityscape at dusk with flying cars...
-[INFO] 2025-08-04 15:32:14 - Task created with ID: rtask-1234abcd5678efgh
-[DEBUG] 2025-08-04 15:32:15 - Task rtask-1234abcd5678efgh status: PENDING
-[DEBUG] 2025-08-04 15:32:17 - Task rtask-1234abcd5678efgh status: RUNNING
-[DEBUG] 2025-08-04 15:32:19 - Progress: 25.0%
-[DEBUG] 2025-08-04 15:32:21 - Progress: 45.0%
-[DEBUG] 2025-08-04 15:32:25 - Progress: 90.0%
-[DEBUG] 2025-08-04 15:32:27 - Task rtask-1234abcd5678efgh status: SUCCEEDED
-[INFO] 2025-08-04 15:32:28 - Image generated successfully: torch.Size([1, 1080, 1920, 3])
+[INFO] 2025-01-04 18:00:12 - Starting Runway Text2Img generation...
+[INFO] 2025-01-04 18:00:12 - Creating task with prompt: A futuristic cityscape at dusk, cinematic lighting
+[DEBUG] 2025-01-04 18:00:13 - Request payload: {
+  "model": "gen4_image",
+  "promptText": "A futuristic cityscape at dusk, cinematic lighting",
+  "ratio": "1024:1024"
+}
+[DEBUG] 2025-01-04 18:00:13 - Request headers: {
+  "Authorization": "Bearer sk-***",
+  "Content-Type": "application/json",
+  "X-Runway-Version": "2024-11-06"
+}
+[INFO] 2025-01-04 18:00:14 - Task created with ID: rtask-abc123def456ghi789
+[DEBUG] 2025-01-04 18:00:15 - Task rtask-abc123def456ghi789 status: PENDING
+[DEBUG] 2025-01-04 18:00:17 - Task rtask-abc123def456ghi789 status: RUNNING
+[DEBUG] 2025-01-04 18:00:19 - Progress: 15.0%
+[DEBUG] 2025-01-04 18:00:21 - Progress: 35.0%
+[DEBUG] 2025-01-04 18:00:23 - Progress: 60.0%
+[DEBUG] 2025-01-04 18:00:25 - Progress: 85.0%
+[DEBUG] 2025-01-04 18:00:27 - Task rtask-abc123def456ghi789 status: SUCCEEDED
+[INFO] 2025-01-04 18:00:28 - Image URL received: https://generated-images.runway.com/rtask-abc123def456ghi789.jpg
+[INFO] 2025-01-04 18:00:29 - Downloading generated image...
+[INFO] 2025-01-04 18:00:30 - Image downloaded successfully (2.3 MB)
+[INFO] 2025-01-04 18:00:30 - Converting image to RGB format
+[INFO] 2025-01-04 18:00:30 - Converting to torch tensor: torch.Size([1, 1024, 1024, 3])
+[INFO] 2025-01-04 18:00:30 - Image generated successfully in 18.2 seconds
 ```
 
 ## Files Added/Modified
+
+### Core Implementation
 - `dream_layer_backend/comfy_nodes/api_nodes/runway_text2img.py` - Main node implementation
 - `dream_layer_backend/comfy_nodes/api_nodes/__init__.py` - Node registration
+- `ComfyUI/custom_nodes/dream_layer_runway/__init__.py` - ComfyUI custom node integration
+
+### Testing & Dependencies
 - `tests/api_nodes/test_runway_text2img.py` - Complete test suite (17 tests)
 - `dream_layer_backend/requirements.txt` - Added httpx dependency
-- `dream_layer_backend/dream_layer_backend_utils/api_key_injector.py` - RUNWAY_API_KEY support
-- `README.md` - Updated with RUNWAY_API_KEY documentation
+
+### Documentation & Screenshots
+- `docs/pr_description_with_screenshots.md` - Enhanced PR description with screenshots
+- `docs/how_to_take_screenshots.md` - Instructions for taking screenshots
+- `docs/images/README.md` - Documentation for screenshots and usage
+- `docs/images/runway_api_logs.txt` - Sample API interaction logs
+- `docs/images/runway_node_workflow.txt` - ASCII workflow diagram
 
 ## Testing
 ✅ All 17 pytest tests pass  

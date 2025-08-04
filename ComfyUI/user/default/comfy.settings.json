@@ -1,3 +1,6 @@
 {
-    "Comfy.TutorialCompleted": true
+    "Comfy.TutorialCompleted": true,
+    "Comfy.NodeLibrary.Bookmarks.V2": [
+        "RunwayText2Img"
+    ]
 }
